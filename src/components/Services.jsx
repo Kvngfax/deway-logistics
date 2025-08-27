@@ -26,7 +26,7 @@ export default function Services() {
 
   return (
     <section id="services" className="py-20 lg:py-30 bg-white">
-      <div className="max-w-[1600px] mx-auto px-6 justify-items-start">
+      <div className="max-w-[1600px] mx-auto px-6 justify-items-start flex flex-col">
         {/* Section Header */}
         <div className="text-left mb-16">
           <h6 className="text-orange-500 text-xl font-semibold uppercase tracking-wide">
@@ -35,15 +35,15 @@ export default function Services() {
           <h2 className="text-4xl md:text-6xl font-bold mt-3">
             What We Offer
           </h2>
-          <p className="text-gray-600 max-w-[950px] mx-auto text-2xl my-5">
+          <p className="text-gray-600 max-w-[950px] text-2xl my-5 text-left self-start justify-items-start ">
             Deway Logistics delivers trusted and innovative solutions backed by years
-            of expertise, ensuring your goods are transported with speed, safety, and precision.  
+            of expertise, ensuring your goods are transported with speed, safety, and precision.
           </p>
         </div>
 
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-          {services.map(({ title, desc, icon: Icon}) => (
+          {services.map(({ title, desc, icon: Icon }) => (
             <div
               key={title}
               className="bg-white shadow-lg rounded-2xl p-8 text-center hover:shadow-2xl transition group"
@@ -61,6 +61,13 @@ export default function Services() {
             </div>
           ))}
         </div>
+
+        <a
+          href="/services"
+          className="bg-orange-500 hover:bg-orange-400 text-gray-200 px-8 py-4 text-2xl font-semibold shadow-lg transition mt-20 w-xs text-center self-center md:self-start"
+        >
+          Learn More
+        </a>
       </div>
     </section>
   );

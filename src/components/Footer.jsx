@@ -7,10 +7,10 @@ const Footer = () => {
   return (
     <footer className="bg-gray-800 text-gray-300 py-20 lg:py-25 px-6 md:px-12">
       <div className="max-w-8xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
-        
+
         {/* Logo + Description */}
         <div>
-        <img src={logo} alt="Logo" className=" max-w-[250px] lg:max-w-[200px] sm:mx-0 relative -left-5" />
+          <img src={logo} alt="Logo" className=" max-w-[250px] lg:max-w-[200px] sm:mx-0 relative -left-5" />
           <p className="mt-8 leading-relaxed text-lg">
             We take pride in offering reliable logistics services that meet all your delivery and shipping needs with speed, security, and professionalism.
           </p>
@@ -27,10 +27,10 @@ const Footer = () => {
         <div>
           <h3 className="font-semibold text-3xl mb-6">Quick Links</h3>
           <ul className="space-y-4 text-xl">
-            <li><a href="#home" className="hover:text-orange-500">Home</a></li>
-            <li><a href="#about" className="hover:text-orange-500">About Us</a></li>
-            <li><a href="#services" className="hover:text-orange-500">Our Services</a></li>
-            <li><a href="#contact" className="hover:text-orange-500">Contact</a></li>
+            <li><a href="/" className="hover:text-orange-500">Home</a></li>
+            <li><a href="/about" className="hover:text-orange-500">About Us</a></li>
+            <li><a href="/services" className="hover:text-orange-500">Our Services</a></li>
+            <li><a href="/contact" className="hover:text-orange-500">Contact</a></li>
           </ul>
         </div>
 
@@ -38,10 +38,10 @@ const Footer = () => {
         <div>
           <h3 className="font-semibold text-3xl mb-6">Our Services</h3>
           <ul className="space-y-4 text-xl">
-            <li><a href="#services" className="hover:text-orange-500">Logistics</a></li>
-            <li><a href="#services" className="hover:text-orange-500">Delivery</a></li>
-            <li><a href="#services" className="hover:text-orange-500">Haulages</a></li>
-            <li><a href="#services" className="hover:text-orange-500">Pick-up</a></li>
+            <li><a href="/services" className="hover:text-orange-500">Logistics</a></li>
+            <li><a href="/services" className="hover:text-orange-500">Delivery</a></li>
+            <li><a href="/services" className="hover:text-orange-500">Haulages</a></li>
+            <li><a href="/services" className="hover:text-orange-500">Pick-up</a></li>
           </ul>
         </div>
 

@@ -3,7 +3,7 @@ import Bike from "../assets/Delivery bike.png"
 
 export default function AboutSection() {
   return (
-    <section className="bg-[#f5f5f5] py-20 lg:py-40 px-8 lg:px-24 -z-100" id="about">
+    <section className="bg-white py-20 lg:pb-20 lg:pt-10 px-8 lg:px-24 -z-100" id="aboutSection">
       <div className="flex flex-col-reverse lg:grid lg:grid-cols-2 gap-16 items-center">
         {/* Left Div - Image */}
         <div className="relative">
@@ -33,19 +33,19 @@ export default function AboutSection() {
 
           {/* Paragraph */}
           <p className="text-gray-600 leading-relaxed text-[22px]">
-            At Deway Logistics, we leverage modern technology to ensure real-time tracking, 
-            timely deliveries, and a seamless customer experience from start to finish. 
-            Whether you need same-day delivery, nationwide shipping, or secure parcel handling, 
+            At Deway Logistics, we leverage modern technology to ensure real-time tracking,
+            timely deliveries, and a seamless customer experience from start to finish.
+            Whether you need same-day delivery, nationwide shipping, or secure parcel handling,
             our professional team is committed to meeting your logistics needs with speed and precision.
           </p>
 
           {/* View Our Services */}
           <div className="pt-4">
-            <a href="#services">
-                <p className="text-xl font-semibold text-gray-800">View Our Services</p>
-                <div className="w-35 h-1 bg-orange-500 mt-1"></div>
+            <a href="/services">
+              <p className="text-xl font-semibold text-gray-800">View Our Services</p>
+              <div className="w-35 h-1 bg-orange-500 mt-1"></div>
             </a>
-            
+
           </div>
         </div>
       </div>

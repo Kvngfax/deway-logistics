@@ -1,32 +1,24 @@
+// src/App.jsx
+import React from "react";
+import { Routes, Route } from "react-router";
+import Layout from "./components/Layout.jsx";
 
-import AboutSection from "./components/AboutSection";
-import ContactInfo from "./components/ContactInfo";
-import ContactSection from "./components/ContactSection";
-import Features from "./components/Features";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
-import Hero from "./components/Hero";
-import Services from "./components/Services";
-import Testimonials from "./components/Testimonials";
+import Home from "./routes/Home.jsx";
+import About from "./routes/About.jsx";
+import Services from "./routes/Services.jsx";
+import Contact from "./routes/Contact.jsx";
+import NotFound from "./routes/NotFound.jsx";
 
-
-function App() {
+export default function App() {
   return (
-    <div className="font-sans">
-      <Header />
-      <main className="pt-24">
-        <Hero />
-        <AboutSection/>
-        <Services/>
-        <Features/>
-        <Testimonials/>
-        <ContactSection/>
-        <ContactInfo/>
-        <Footer/>
-        {/* Other sections… */}
-      </main>
-    </div>
+    <Routes>
+      <Route element={<Layout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="about" element={<About />} />
+        <Route path="services" element={<Services />} />
+        <Route path="contact" element={<Contact />} />
+        <Route path="*" element={<NotFound />} />
+      </Route>
+    </Routes>
   );
 }
-
-export default App;

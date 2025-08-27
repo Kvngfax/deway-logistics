@@ -10,8 +10,8 @@ export default function Features() {
   ];
 
   return (
-    <section className="bg-gray-50 py-20 lg:py-30">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 items-center gap-12">
+    <section className="bg-gray-50 py-20 lg:py-30 md:px-16">
+      <div className="max-w-7xl md:max-w-full mx-auto px-6 lg:px-8 flex flex-col-reverse md:grid md:grid-cols-2 items-center gap-12 md:gap-20">
         {/* Left Image */}
         <div>
           <img
@@ -46,10 +46,10 @@ export default function Features() {
 
           <div className="pt-[30px]">
             <a href="#services">
-                <p className="text-xl font-semibold text-gray-800">Learn More</p>
-                <div className="w-20 h-1 bg-orange-500 mt-1"></div>
+              <p className="text-xl font-semibold text-gray-800">Learn More</p>
+              <div className="w-20 h-1 bg-orange-500 mt-1"></div>
             </a>
-            
+
           </div>
         </div>
       </div>

@@ -27,7 +27,7 @@ const testimonials = [
 export default function Testimonials() {
   return (
     <section className="bg-white py-20">
-      <div className="max-w-6xl mx-auto px-6 lg:px-8 text-center">
+      <div className="max-w-6xl mx-auto px-6 lg:px-8 text-center ">
         {/* Heading */}
         <h6 className="text-orange-500 uppercase font-semibold tracking-wide text-xl">
           Testimonial
@@ -41,7 +41,7 @@ export default function Testimonials() {
           modules={[Autoplay, Pagination]}
           spaceBetween={30}
           slidesPerView={1}
-          autoplay={{ delay: 4000, disableOnInteraction: false, pauseOnMouseEnter: true }}
+          autoplay={{ delay: 5000, disableOnInteraction: false, pauseOnMouseEnter: true }}
           pagination={{ clickable: true }}
           loop
           className="pb-12"
