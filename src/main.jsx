@@ -5,6 +5,7 @@ import App from "./App.jsx";
 import "./index.css";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import ScrollToHashElement from "./components/ScrollToHashElement";
 
 export default function ScrollToTop() {
   const { pathname } = useLocation();
@@ -20,6 +21,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <HashRouter>
       <ScrollToTop/>
+      <ScrollToHashElement />
       <App />
     </HashRouter>
   </React.StrictMode>
