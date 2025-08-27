@@ -9,4 +9,7 @@ export default defineConfig({
     tailwindcss(),
   ],
   base: "/deway-logistics",
+  build: {
+    sourcemap: false, // disables inline eval source maps
+  }
 })
