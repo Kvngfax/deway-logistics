@@ -20,7 +20,7 @@ const slides = [
     heading: "Your Trusted Partner",
     text: "We connect businesses and people with reliable logistics solutions that keep the world moving.",
     buttonText: "Welcome",
-    buttonLink: "#hero",
+    buttonLink: "/deway-logistics/#hero",
   },
   {
     id: 2,
@@ -29,7 +29,7 @@ const slides = [
     heading: "Who We Are ",
     text: "With years of experience, Deway Logistics ensures every package reaches its destination safely and on time.",
     buttonText: "About Us",
-    buttonLink: "/about",
+    buttonLink: "/deway-logistics/about",
   },
   {
     id: 3,
@@ -38,7 +38,7 @@ const slides = [
     heading: "We've Got You Covered",
     text: "Explore our range of logistics services designed to meet your unique needs, whether for businesses or individuals.",
     buttonText: "View Services",
-    buttonLink: "/services",
+    buttonLink: "/deway-logistics/services",
   },
 ];
 

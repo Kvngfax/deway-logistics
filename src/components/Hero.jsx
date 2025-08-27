@@ -20,13 +20,13 @@ export default function Hero() {
           </p>
           <div className="flex justify-left lg:justify-start gap-4 text-lg pt-[25px] lg:pt-[0]">
             <a
-              href="/about"
+              href="/deway-logistics/about"
               className="rounded-lg bg-orange-400 px-6 py-3 text-gray-100 font-semibold hover:bg-orange-500 transition"
             >
               Learn More
             </a>
             <a
-              href="/contact"
+              href="/deway-logistics/contact"
               className="rounded-lg border border-orange-400 px-6 py-3 text-orange-400 font-semibold hover:bg-orange-400 hover:text-black transition"
             >
               Contact Us

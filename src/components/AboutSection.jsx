@@ -41,7 +41,7 @@ export default function AboutSection() {
 
           {/* View Our Services */}
           <div className="pt-4">
-            <a href="/services">
+            <a href="/deway-logistics/services">
               <p className="text-xl font-semibold text-gray-800">View Our Services</p>
               <div className="w-35 h-1 bg-orange-500 mt-1"></div>
             </a>
