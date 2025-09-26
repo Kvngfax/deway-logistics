@@ -51,7 +51,7 @@ const Footer = () => {
           <ul className="space-y-4 text-xl">
             <li className="flex items-start space-x-2">
               <MapPin className="w-7 h-7 text-orange-500" />
-              <span>123 Dummy Street, Lagos</span>
+              <span>Suite 409 AHCN Towers, Alausa, Ikeja.</span>
             </li>
             <li className="flex items-center space-x-2">
               <Phone className="w-7 h-7 text-orange-500" />
@@ -59,7 +59,7 @@ const Footer = () => {
             </li>
             <li className="flex items-center space-x-2">
               <Mail className="w-7 h-7 text-orange-500" />
-              <a href="mailto:info@deway.com" className="hover:text-orange-500">info@deway.com</a>
+              <a href="mailto:info@deway.com" className="hover:text-orange-500">info@dewaylogistics.com</a>
             </li>
           </ul>
         </div>

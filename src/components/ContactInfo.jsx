@@ -10,7 +10,7 @@ const ContactInfo = () => {
         <div className="flex flex-col items-center md:items-start space-y-5">
           <MapPin className="w-15 h-15 text-orange-500" />
           <h3 className="font-semibold text-3xl">Our Office</h3>
-          <p className="text-gray-400 text-xl">123 Dummy Street, Lagos</p>
+          <p className="text-gray-400 text-xl">Suite 409 AHCN Towers, Alausa, Ikeja</p>
         </div>
 
         {/* Email */}
