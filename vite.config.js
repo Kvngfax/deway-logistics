@@ -8,7 +8,7 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
-  base: "/deway-logistics",
+  base: "/",
   build: {
     sourcemap: false, // disables inline eval source maps
   }

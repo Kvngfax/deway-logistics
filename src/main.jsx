@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { HashRouter } from "react-router-dom"; // 👈 use HashRouter
+import { BrowserRouter } from "react-router-dom"; // 👈 use HashRouter
 import App from "./App.jsx";
 import "./index.css";
 import { useEffect } from "react";
@@ -19,10 +19,10 @@ export default function ScrollToTop() {
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <HashRouter>
+    <BrowserRouter>
       <ScrollToTop/>
       <ScrollToHashElement />
       <App />
-    </HashRouter>
+    </BrowserRouter>
   </React.StrictMode>
 );

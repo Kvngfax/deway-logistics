@@ -63,7 +63,7 @@ export default function Services() {
         </div>
 
         <a
-          href="/deway-logistics/#/services"
+          href="/services"
           className="bg-orange-500 hover:bg-orange-400 text-gray-200 px-8 py-4 text-2xl font-semibold shadow-lg transition mt-20 w-xs text-center self-center md:self-start"
         >
           Learn More
