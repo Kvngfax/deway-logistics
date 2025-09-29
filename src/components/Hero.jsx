@@ -1,6 +1,8 @@
 // src/components/Hero.jsx
 import React from "react";
-import hero from "../assets/delivery3.jpg"
+import hero from "../assets/delivery3.jpg";
+import { NavLink } from 'react-router';
+import { Link } from 'react-router-dom';
 
 export default function Hero() {
 
@@ -19,18 +21,18 @@ export default function Hero() {
             Deway Logistics is an indigenous logistics company based in Nigeria, dedicated to providing fast, reliable, and technology-driven transport solutions. Our services are designed to meet the growing demands of businesses and individuals across the country, offering efficient transportation, pick-up, and last-mile delivery services.
           </p>
           <div className="flex justify-left lg:justify-start gap-4 text-lg pt-[25px] lg:pt-[0]">
-            <a
-              href="/about"
+            <NavLink
+              to="/about"
               className="rounded-lg bg-orange-400 px-6 py-3 text-gray-100 font-semibold hover:bg-orange-500 transition"
             >
               Learn More
-            </a>
-            <a
-              href="/contact"
+            </NavLink>
+            <Link
+              to="/contact"
               className="rounded-lg border border-orange-400 px-6 py-3 text-orange-400 font-semibold hover:bg-orange-400 hover:text-black transition"
             >
               Contact Us
-            </a>
+            </Link>
           </div>
         </div>
 

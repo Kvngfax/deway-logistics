@@ -1,5 +1,6 @@
 import React from "react";
-import Bike from "../assets/Delivery bike.png"
+import Bike from "../assets/Delivery bike.png";
+import { Link } from 'react-router-dom';
 
 export default function AboutSection() {
   return (
@@ -41,10 +42,10 @@ export default function AboutSection() {
 
           {/* View Our Services */}
           <div className="pt-4">
-            <a href="/services">
+            <Link to="/services">
               <p className="text-xl font-semibold text-gray-800">View Our Services</p>
               <div className="w-35 h-1 bg-orange-500 mt-1"></div>
-            </a>
+            </Link>
 
           </div>
         </div>

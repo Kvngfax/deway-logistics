@@ -1,7 +1,8 @@
 import React from "react";
 import { MapPin, Phone, Mail } from "lucide-react";
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/fa";
-import logo from "../assets/logo-white.png"
+import logo from "../assets/logo-white.png";
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -27,10 +28,10 @@ const Footer = () => {
         <div>
           <h3 className="font-semibold text-3xl mb-6">Quick Links</h3>
           <ul className="space-y-4 text-xl">
-            <li><a href="/" className="hover:text-orange-500">Home</a></li>
-            <li><a href="/about" className="hover:text-orange-500">About Us</a></li>
-            <li><a href="/services" className="hover:text-orange-500">Our Services</a></li>
-            <li><a href="/contact" className="hover:text-orange-500">Contact</a></li>
+            <li><Link to="/" className="hover:text-orange-500">Home</Link></li>
+            <li><Link to="/about" className="hover:text-orange-500">About Us</Link></li>
+            <li><Link to="/services" className="hover:text-orange-500">Our Services</Link></li>
+            <li><Link to="/contact" className="hover:text-orange-500">Contact</Link></li>
           </ul>
         </div>
 
@@ -38,10 +39,10 @@ const Footer = () => {
         <div>
           <h3 className="font-semibold text-3xl mb-6">Our Services</h3>
           <ul className="space-y-4 text-xl">
-            <li><a href="/services" className="hover:text-orange-500">Logistics</a></li>
-            <li><a href="/services" className="hover:text-orange-500">Delivery</a></li>
-            <li><a href="/services" className="hover:text-orange-500">Haulages</a></li>
-            <li><a href="/services" className="hover:text-orange-500">Pick-up</a></li>
+            <li><Link to="/services" className="hover:text-orange-500">Logistics</Link></li>
+            <li><Link to="/services" className="hover:text-orange-500">Delivery</Link></li>
+            <li><Link to="/services" className="hover:text-orange-500">Haulages</Link></li>
+            <li><Link to="/services" className="hover:text-orange-500">Pick-up</Link></li>
           </ul>
         </div>
 

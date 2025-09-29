@@ -2,6 +2,7 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { Link } from 'react-router-dom';;
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -78,12 +79,12 @@ export default function Hero() {
                 <p className="text-gray-200 text-xl md:text-2xl mb-16 max-w-2xl">
                   {slide.text}
                 </p>
-                <a
+                <Link
                   href={slide.buttonLink}
                   className="bg-orange-500 hover:bg-orange-400 text-gray-200 px-8 py-4 text-2xl font-semibold shadow-lg transition"
                 >
                   {slide.buttonText}
-                </a>
+                </Link>
               </div>
             </div>
           </SwiperSlide>
