@@ -4,7 +4,6 @@ import van from "../assets/delivery van.jpg"
 
 export default function Features() {
   const features = [
-    "Best in Industry",
     "Timely Delivery",
     "24/7 Customer Support",
   ];
