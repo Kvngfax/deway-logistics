@@ -3,7 +3,7 @@ import { NavLink, Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
 // Adjust the path/name to match your asset if different.
-import logo from "../assets/deway logo.png";
+import logo from "../assets/Deway logo.png";
 
 const LINKS = [
   { to: "/", label: "Home", end: true },
