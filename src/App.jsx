@@ -7,6 +7,7 @@ import Home from "./routes/Home.jsx";
 import About from "./routes/About.jsx";
 import Services from "./routes/Services.jsx";
 import Contact from "./routes/Contact.jsx";
+import Booking from "./routes/Booking"; 
 import NotFound from "./routes/NotFound.jsx";
 
 export default function App() {
@@ -17,6 +18,7 @@ export default function App() {
         <Route path="about" element={<About />} />
         <Route path="services" element={<Services />} />
         <Route path="contact" element={<Contact />} />
+        <Route path="/booking" element={<Booking />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

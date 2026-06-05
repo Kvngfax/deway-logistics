@@ -1,171 +1,141 @@
-// src/components/ContactSection.jsx
-import React, { useState } from "react";
+import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
-import deliveryMan from "../assets/Delivery man.jpg";
+import { Send } from "lucide-react";
+import Reveal from "./Reveal";
 
-// Nigerian States
-const states = [
-  "Abia", "Adamawa", "Akwa Ibom", "Anambra", "Bauchi", "Bayelsa", "Benue",
-  "Borno", "Cross River", "Delta", "Ebonyi", "Edo", "Ekiti", "Enugu",
-  "FCT - Abuja", "Gombe", "Imo", "Jigawa", "Kaduna", "Kano", "Katsina",
-  "Kebbi", "Kogi", "Kwara", "Lagos", "Nasarawa", "Niger", "Ogun", "Ondo",
-  "Osun", "Oyo", "Plateau", "Rivers", "Sokoto", "Taraba", "Yobe", "Zamfara",
+// Adjust path/name to match your asset if different.
+import img from "../assets/Delivery man.jpg";
+
+/* EmailJS — set these in your .env (Vite) and they will be read at build time:
+   VITE_EMAILJS_SERVICE_ID, VITE_EMAILJS_TEMPLATE_ID, VITE_EMAILJS_PUBLIC_KEY
+   (use the same IDs your current form already uses). */
+const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+const STATES = [
+  "Abuja", "Akwa Ibom", "Anambra", "Cross River", "Delta", "Edo", "Ekiti",
+  "Kaduna", "Kano", "Kogi", "Kwara", "Lagos", "Ogun", "Ondo", "Osun", "Oyo", "Rivers",
 ];
 
-const ContactSection = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    state: "",
-    description: "",
-  });
+const EMPTY = { name: "", email: "", phone: "", state: "", description: "" };
 
-  const [status, setStatus] = useState(""); // success / error / loading
+export default function ContactSection() {
+  const [form, setForm] = useState(EMPTY);
+  const [errors, setErrors] = useState({});
+  const [status, setStatus] = useState({ type: "", message: "" });
+  const [loading, setLoading] = useState(false);
+  const hp = useRef(null); // anti-spam honeypot
 
-  // Handle input change
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const update = (e) => {
+    const { name, value } = e.target;
+    setForm((f) => ({ ...f, [name]: value }));
+    if (errors[name]) setErrors((er) => ({ ...er, [name]: "" }));
   };
 
-  // Handle form submit
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setStatus("loading");
+  const validate = () => {
+    const next = {};
+    if (!form.name.trim()) next.name = "Please enter your name.";
+    if (!form.email.trim()) next.email = "Please enter your email.";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) next.email = "Enter a valid email address.";
+    if (!form.phone.trim()) next.phone = "Please enter your contact number.";
+    if (!form.state) next.state = "Please select a state.";
+    if (!form.description.trim()) next.description = "Tell us a little about your request.";
+    setErrors(next);
+    return Object.keys(next).length === 0;
+  };
 
-    emailjs
-      .send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        formData,
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-      )
-      .then(
-        (result) => {
-          console.log("Email sent:", result.text);
-          setStatus("success");
-          setFormData({
-            name: "",
-            email: "",
-            phone: "",
-            state: "",
-            description: "",
-          });
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    setStatus({ type: "", message: "" });
+    // Honeypot: a bot filled the hidden field — silently accept without sending.
+    if (hp.current && hp.current.value) {
+      setStatus({ type: "ok", message: "Thank you! Your request has been sent. We'll be in touch shortly." });
+      setForm(EMPTY);
+      return;
+    }
+    if (!validate()) return;
+
+    setLoading(true);
+    try {
+      await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        {
+          from_name: form.name,
+          reply_to: form.email,
+          phone: form.phone,
+          state: form.state,
+          message: form.description,
         },
-        (error) => {
-          console.error("EmailJS Error:", error.text);
-          setStatus("error");
-        }
+        { publicKey: PUBLIC_KEY }
       );
+      setStatus({ type: "ok", message: "Thank you! Your request has been sent. We'll be in touch shortly." });
+      setForm(EMPTY);
+    } catch (err) {
+      setStatus({ type: "bad", message: "Something went wrong. Please try again or call us directly." });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <section
-      className="w-full bg-gray-50 py-16 lg:py-30 px-6 md:pl-12 md:pr-2"
-      id="contact"
-    >
-      <div className="max-w-full mx-auto flex flex-col md:grid md:grid-cols-2 gap-12 items-center">
-        {/* Left Form */}
-        <div className="flex-1">
-          <div className="relative left-4">
-            <p className="relative z-10 text-xl text-gray-600">
-              Have some goods, need a helping hand?
-            </p>
-            <span className="absolute -left-4 -top-2 h-12 w-[10px] bg-orange-400 -z-0"></span>
+    <section className="sec" id="contact-form">
+      <div className="wrap">
+        <div className="cgrid">
+          <Reveal className="cform" as="div">
+            <span className="eyebrow">Have some goods, need a helping hand?</span>
+            <h2>Contact <span className="hl">Deway</span></h2>
+
+            <form onSubmit={onSubmit} noValidate>
+              {/* anti-spam honeypot — leave empty; hidden from real users */}
+              <div className="hp" aria-hidden="true">
+                <label htmlFor="company-website">Company</label>
+                <input id="company-website" ref={hp} type="text" name="company" tabIndex={-1} autoComplete="off" />
+              </div>
+
+              <div className="fg">
+                <div className={`field ${errors.name ? "field--error" : ""}`}>
+                  <input name="name" value={form.name} onChange={update} placeholder="Your Name" aria-label="Your Name" />
+                  {errors.name && <div className="err">{errors.name}</div>}
+                </div>
+                <div className={`field ${errors.email ? "field--error" : ""}`}>
+                  <input name="email" type="email" value={form.email} onChange={update} placeholder="Your Email Address" aria-label="Your Email Address" />
+                  {errors.email && <div className="err">{errors.email}</div>}
+                </div>
+                <div className={`field ${errors.phone ? "field--error" : ""}`}>
+                  <input name="phone" value={form.phone} onChange={update} placeholder="Your Contact Number" aria-label="Your Contact Number" />
+                  {errors.phone && <div className="err">{errors.phone}</div>}
+                </div>
+                <div className={`field ${errors.state ? "field--error" : ""}`}>
+                  <select name="state" value={form.state} onChange={update} aria-label="Select State">
+                    <option value="">Select State</option>
+                    {STATES.map((s) => <option key={s} value={s}>{s}</option>)}
+                  </select>
+                  {errors.state && <div className="err">{errors.state}</div>}
+                </div>
+              </div>
+
+              <div className={`field ${errors.description ? "field--error" : ""}`}>
+                <textarea name="description" value={form.description} onChange={update} placeholder="Describe your request" aria-label="Describe your request" />
+                {errors.description && <div className="err">{errors.description}</div>}
+              </div>
+
+              <button type="submit" className="btn btn-primary" disabled={loading}>
+                {loading ? "Sending…" : "Submit Your Request"} <Send className="ic" />
+              </button>
+
+              {status.message && (
+                <p className={`form-note ${status.type}`} role="status">{status.message}</p>
+              )}
+            </form>
+          </Reveal>
+
+          <div className="cmedia">
+            <img src={img} alt="Deway Logistics customer support" />
           </div>
-          <h2 className="text-5xl font-bold mt-6 mb-12">Contact Deway</h2>
-
-          <form onSubmit={handleSubmit} className="space-y-12 text-xl">
-            {/* Name + Email + Phone + State */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-              <input
-                type="text"
-                name="name"
-                placeholder="Your Name"
-                value={formData.name}
-                onChange={handleChange}
-                className="w-full border-b border-gray-300 focus:border-orange-500 focus:outline-none py-2"
-                required
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="Your Email Address"
-                value={formData.email}
-                onChange={handleChange}
-                className="w-full border-b border-gray-300 focus:border-orange-500 focus:outline-none py-2"
-                required
-              />
-              <input
-                type="text"
-                name="phone"
-                placeholder="Your Contact Number"
-                value={formData.phone}
-                onChange={handleChange}
-                className="w-full border-b border-gray-300 focus:border-orange-500 focus:outline-none py-2"
-                required
-              />
-              <select
-                name="state"
-                value={formData.state}
-                onChange={handleChange}
-                className="w-full border-b border-gray-300 focus:border-orange-500 focus:outline-none py-2 bg-transparent"
-                required
-              >
-                <option value="">Select State</option>
-                {states.map((s) => (
-                  <option key={s} value={s}>
-                    {s}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            {/* Message */}
-            <textarea
-              name="description"
-              placeholder="Describe your request"
-              value={formData.description}
-              onChange={handleChange}
-              rows="4"
-              className="w-full border-b border-gray-300 focus:border-orange-500 focus:outline-none py-2 resize-none"
-              required
-            ></textarea>
-
-            {/* Submit Button */}
-            <button
-              type="submit"
-              disabled={status === "loading"}
-              className="bg-orange-500 text-white px-15 font-bold py-4 text-xl shadow-lg hover:bg-orange-600 transition mt-6 disabled:opacity-60"
-            >
-              {status === "loading" ? "Sending..." : "Submit Your Request"}
-            </button>
-
-            {/* Status Messages */}
-            {status === "success" && (
-              <p className="text-green-600 font-semibold">
-                ✅ Your request has been sent successfully!
-              </p>
-            )}
-            {status === "error" && (
-              <p className="text-red-600 font-semibold">
-                ❌ Something went wrong. Please try again later.
-              </p>
-            )}
-          </form>
-        </div>
-
-        {/* Right Image */}
-        <div className="flex-1 md:block">
-          <img
-            src={deliveryMan}
-            alt="Contact logistics"
-            className="w-full h-auto md:h-[600px] object-cover shadow-lg"
-          />
         </div>
       </div>
     </section>
   );
-};
-
-export default ContactSection;
+}

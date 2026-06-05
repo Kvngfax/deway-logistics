@@ -1,13 +1,17 @@
 import ServicesHero from "../components/ServicesHero";
-import ContactSection from "../components/ContactSection";
 import ServicesContent from "../components/ServicesContent";
+import ServiceOfferings from "../components/ServiceOfferings";
+import ContactSection from "../components/ContactSection";
+import ContactInfo from "../components/ContactInfo";
 
 export default function Services() {
-    return (
-      <section className="">
-        <ServicesHero/>
-        <ServicesContent/>
-        <ContactSection/>
-      </section>
-    );
-  }
+  return (
+    <>
+      <ServicesHero />
+      <ServicesContent />
+      <ServiceOfferings />
+      <ContactSection />
+      <ContactInfo />
+    </>
+  );
+}

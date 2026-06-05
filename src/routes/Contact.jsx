@@ -1,13 +1,13 @@
-import ContactSection from "../components/ContactSection"
-import ContactHero from "../components/ContactHero"
+import ContactHero from "../components/ContactHero";
+import ContactSection from "../components/ContactSection";
 import ContactInfo from "../components/ContactInfo";
 
 export default function Contact() {
-    return (
-      <section id="contact" className="">
-        <ContactHero/>
-        <ContactSection/>
-        <ContactInfo/>
-      </section>
-    );
-  }
+  return (
+    <>
+      <ContactHero />
+      <ContactSection />
+      <ContactInfo />
+    </>
+  );
+}

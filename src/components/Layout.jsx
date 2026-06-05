@@ -8,7 +8,7 @@ export default function Layout() {
     <>
       <Header />
       {/* push content below fixed navbar */}
-      <main className="pt-24">
+      <main className="">
         <Outlet />
       </main>
       <Footer />

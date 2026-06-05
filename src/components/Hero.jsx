@@ -1,49 +1,41 @@
-// src/components/Hero.jsx
-import React from "react";
-import hero from "../assets/delivery3.jpg";
-import { NavLink } from 'react-router';
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import { BadgeCheck } from "lucide-react";
+import Reveal from "./Reveal";
+
+// Adjust path/name to match your asset if different.
+import img from "../assets/delivery3.jpg";
 
 export default function Hero() {
-
   return (
-    <section className="w-full bg-white text-black" id="hero">
-      <div className="mx-auto max-w-[1520px] flex flex-col lg:flex-row items-center py-10 lg:py-20 lg:px-8 gap-12">
-        {/* Text Column */}
-        <div className="flex-1 space-y-4 md:space-y-6 text-left lg:text-left px-6">
-          <h6 className="text-orange-400 font-bold uppercase tracking-widest">
-            Safe & Faster
-          </h6>
-          <h1 className="text-[40px] lg:text-6xl font-extrabold leading-tight">
-            Logistics and Delivery Services
-          </h1>
-          <p className="text-gray-800 max-w-xl mx-auto lg:mx-0 text-[20px] md:text-2xl">
-            Deway Logistics is an indigenous logistics company based in Nigeria, dedicated to providing fast, reliable, and technology-driven transport solutions. Our services are designed to meet the growing demands of businesses and individuals across the country, offering efficient transportation, pick-up, and last-mile delivery services.
-          </p>
-          <div className="flex justify-left lg:justify-start gap-4 text-lg pt-[25px] lg:pt-[0]">
-            <NavLink
-              to="/about"
-              className="rounded-lg bg-orange-400 px-6 py-3 text-gray-100 font-semibold hover:bg-orange-500 transition"
-            >
-              Learn More
-            </NavLink>
-            <Link
-              to="/contact"
-              className="rounded-lg border border-orange-400 px-6 py-3 text-orange-400 font-semibold hover:bg-orange-400 hover:text-black transition"
-            >
-              Contact Us
-            </Link>
-          </div>
-        </div>
+    <section className="sec" id="hero">
+      <div className="wrap split">
+        <Reveal>
+          <span className="eyebrow">Safe &amp; Faster</span>
+          <h2 style={{ fontSize: "clamp(2rem,5vw,3.4rem)", fontWeight: 800, marginTop: 16 }}>
+            Logistics and <span className="hl">Delivery</span> Services
+          </h2>
+          <p className="lead" style={{ marginTop: 24 }}>
+            Deway Logistics is a national logistics company committed to delivering fast, reliable, and technology-driven transportation solutions. We serve businesses and individuals with a comprehensive range of logistics services tailored to meet the evolving demands of today's marketplace.
 
-        {/* Image Column */}
-        <div className="flex-1 flex justify-center lg:justify-end">
-          <img
-            src={hero}
-            alt="Cargo containers at logistics hub"
-            className="w-full max-w-full lg:max-w-7xl lg:w-[800px] shadow-2xl"
-          />
-        </div>
+          </p>
+          <p className="lead" style={{ marginTop: 16 }}>
+            From transportation and scheduled pickups to seamless last-mile delivery, our solutions are designed to ensure speed, efficiency, and exceptional customer satisfaction. With a focus on innovation, operational excellence, and nationwide reach, we help our clients move goods with confidence, reliability, and ease.
+          </p>
+          <div className="hero-cta" style={{ marginTop: 32 }}>
+            <Link to="/about" className="btn btn-primary">Learn More</Link>
+            <Link to="/contact" className="btn btn-ghost">Contact Us</Link>
+          </div>
+        </Reveal>
+
+        <Reveal className="figure r">
+          <div className="blob" />
+          <div className="frame">
+            <img src={img} alt="Deway Logistics operations" />
+          </div>
+          <div className="chip" style={{ bottom: 18, left: -6 }}>
+            <BadgeCheck className="ic" /> Technology-driven
+          </div>
+        </Reveal>
       </div>
     </section>
   );
