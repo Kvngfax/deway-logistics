@@ -29,7 +29,7 @@ export default function ServiceOfferings() {
           <span className="eyebrow">Service Offerings</span>
           <h2>Everything We <span className="hl">Deliver</span></h2>
           <p className="lead">
-            From a single parcel across town to full warehousing for your business — Deway covers
+            From a single parcel across town to full warehousing for your business, Deway covers
             the complete range of logistics needs.
           </p>
         </Reveal>
